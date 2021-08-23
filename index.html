@@ -1,0 +1,255 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>euphony</title>
+	<meta name="description" content="Documentation for euphony">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">euphony</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>euphony</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#euphony" id="euphony" style="color: inherit; text-decoration: none;">
+					<h1>euphony</h1>
+				</a>
+				<p><em>Euphony</em> is a lightweight audio playback and visualization library for Javscript with zero dependencies and full Typescript support</p>
+				<p>Despite being designed with audio visulization in mind it can just as well be used for simple audio playback. The library allows for easy loading, playing, pausing, synchronization, visualization and more of audio files</p>
+				<p>For more thorough documentation see: TODO: ADD LINK</p>
+				<p><em>If you are a developer looking to work on euphony itself or otherwise need to see implementation details see: TODO: ADD LINK</em></p>
+				<a href="#set-up" id="set-up" style="color: inherit; text-decoration: none;">
+					<h2>Set Up</h2>
+				</a>
+				<p>To install via npm use</p>
+				<pre><code class="language-bash"><span style="color: #000000">npm install @ninefour/euphony</span>
+</code></pre>
+				<p>Then in your node.js file import as needed</p>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Playback</span><span style="color: #000000">, </span><span style="color: #001080">Group</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@ninefour/euphony&#039;</span><span style="color: #000000">;</span>
+</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p><em><strong>Note</strong>: Almost all browsers require user interaction (usually a click) before allowing audio playback. For clarity and brevity these examples work assuming said user interaction has already happened</em></p>
+				<a href="#basic-playback" id="basic-playback" style="color: inherit; text-decoration: none;">
+					<h3>Basic Playback</h3>
+				</a>
+				<p>Load a local audio file and play it back</p>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">audio</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #001080">audio</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/path/to/audio.mp3&#039;</span><span style="color: #000000">).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">audio</span><span style="color: #000000">.</span><span style="color: #795E26">play</span><span style="color: #000000">());</span>
+</code></pre>
+				<p>Or load an external audio file</p>
+				<pre><code class="language-js"><span style="color: #001080">audio</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;http://yoursite.com/path/to/audio.mp3&#039;</span><span style="color: #000000">);</span>
+</code></pre>
+				<p>If you have multiple audio sources that need to be downmixed you can make use of euphony&#39;s groups</p>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">melody</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">percussion</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">song</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Group</span><span style="color: #000000">({ </span><span style="color: #001080">sources:</span><span style="color: #000000"> [</span><span style="color: #001080">melody</span><span style="color: #000000">, </span><span style="color: #001080">percussion</span><span style="color: #000000">] });</span>
+
+<span style="color: #267F99">Promise</span><span style="color: #000000">.</span><span style="color: #795E26">all</span><span style="color: #000000">([</span>
+<span style="color: #000000">    </span><span style="color: #001080">melody</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/path/to/melody.mp3&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #001080">percussion</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/path/to/percussion.mp3&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">]).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">song</span><span style="color: #000000">.</span><span style="color: #795E26">play</span><span style="color: #000000">());</span>
+</code></pre>
+				<p>You can even create sub-groups</p>
+				<pre><code class="language-js"><span style="color: #008000">// melody</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">melody</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #008000">// percussion group</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">kick</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">hat</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">snare</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">percussion</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Group</span><span style="color: #000000">({ </span><span style="color: #001080">sources:</span><span style="color: #000000"> [</span><span style="color: #001080">kick</span><span style="color: #000000">, </span><span style="color: #001080">hat</span><span style="color: #000000">, </span><span style="color: #001080">snare</span><span style="color: #000000">] })</span>
+
+<span style="color: #008000">// put it all together</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">song</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Group</span><span style="color: #000000">({ </span><span style="color: #001080">sources:</span><span style="color: #000000"> [</span><span style="color: #001080">melody</span><span style="color: #000000">, </span><span style="color: #001080">percussion</span><span style="color: #000000">] });</span>
+</code></pre>
+				<p>Options for configuring your Playbacks can be given in the constructor, set afterwards individually, or all at once in a group</p>
+				<pre><code class="language-js"><span style="color: #008000">// set in constructor</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">melody</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">({ </span><span style="color: #001080">volume:</span><span style="color: #000000"> </span><span style="color: #098658">0.8</span><span style="color: #000000">, </span><span style="color: #001080">loop:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> })</span>
+<span style="color: #008000">// set individually</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">percussion</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Source</span><span style="color: #000000">();</span>
+<span style="color: #001080">percussion</span><span style="color: #000000">.</span><span style="color: #001080">volume</span><span style="color: #000000"> = </span><span style="color: #098658">0.5</span><span style="color: #000000">;</span>
+<span style="color: #001080">percussion</span><span style="color: #000000">.</span><span style="color: #001080">loop</span><span style="color: #000000"> = </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// set all at once with a group</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">song</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Group</span><span style="color: #000000">({ </span><span style="color: #001080">sources:</span><span style="color: #000000"> [</span><span style="color: #001080">melody</span><span style="color: #000000">, </span><span style="color: #001080">percussion</span><span style="color: #000000">] })</span>
+<span style="color: #001080">song</span><span style="color: #000000">.</span><span style="color: #795E26">setAll</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;loop&quot;</span><span style="color: #000000">, </span><span style="color: #0000FF">false</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#visualization" id="visualization" style="color: inherit; text-decoration: none;">
+					<h3>Visualization</h3>
+				</a>
+				<p>All Playbacks and Groups come with an attached Analyser that allows for easy computation and retrival of frequency and or waveform data. To save on computational resources analysis data is only computed when specifically called. Further, the analysis is split between computing frequency and waveform data seperately with <code>updateFrequency()</code> and <code>updateWaveform()</code> respectively</p>
+				<p>For conveniece the frequency or waveform data can be updated for all members of a group by calling <code>updateFrequencyAll()</code> or <code>updateWaveformAll()</code></p>
+				<p>The data available on <code>updateFrequency()</code> is as follows:</p>
+				<ul>
+					<li><em><strong>Frequency</strong></em>:  Array of normalized frequency data where each member of the array is a number between 0.0 and 1.0 representing the amplitude of the frequency at a given frequency band starting from 0 hz</li>
+					<li><em><strong>Ampltiude</strong></em>: The mean normalized frequency data representing the overall amplitude of the audio</li>
+					<li><em><strong>Signal</strong></em>: A boolean signal that is true when the amplitude is over a given threshold</li>
+				</ul>
+				<p>The data available on <code>updateWaveform()</code> is as follows:</p>
+				<ul>
+					<li><em><strong>Waveform</strong></em>: Array of normalized waveform (aka time-domain) data, where each member is a number between -1.0 and 1.0</li>
+				</ul>
+				<a href="#example-visualization-set-up" id="example-visualization-set-up" style="color: inherit; text-decoration: none;">
+					<h3>Example Visualization Set Up</h3>
+				</a>
+				<p>A basic example template of how one might go about setting up <em>euphony</em> to playback audio and retrieve audio analysis data to use in an animation</p>
+				<pre><code class="language-js"><span style="color: #008000">// initialize audio</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">melody</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Playback</span><span style="color: #000000">({ </span><span style="color: #001080">loop:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">percussion</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Playback</span><span style="color: #000000">({ </span><span style="color: #001080">loop:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000"> });</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">song</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Group</span><span style="color: #000000">({ </span><span style="color: #001080">sources:</span><span style="color: #000000"> [</span><span style="color: #001080">melody</span><span style="color: #000000">, </span><span style="color: #001080">percussion</span><span style="color: #000000">] });</span>
+<span style="color: #267F99">Promise</span><span style="color: #000000">.</span><span style="color: #795E26">all</span><span style="color: #000000">([</span>
+<span style="color: #000000">    </span><span style="color: #001080">melody</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/path/to/melody.mp3&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #001080">percussion</span><span style="color: #000000">.</span><span style="color: #795E26">load</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/path/to/percussion.mp3&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">]).</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">song</span><span style="color: #000000">.</span><span style="color: #795E26">play</span><span style="color: #000000">());</span>
+
+<span style="color: #008000">// set up render loop</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">render</span><span style="color: #000000"> = () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #008000">// update frequency data (can be individual or as a group)</span>
+<span style="color: #000000">    </span><span style="color: #001080">melody</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #795E26">updateFrequency</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #001080">percussion</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #795E26">updateFrequency</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #001080">song</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #795E26">updateFrequency</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #008000">// or waveform data (can be individual or as a group)</span>
+<span style="color: #000000">    </span><span style="color: #001080">song</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #795E26">updateWaveformAll</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span>
+<span style="color: #000000">    </span><span style="color: #008000">// access data to use in animations...</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">song</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #001080">freqeuncy</span><span style="color: #000000">);</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">melody</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #001080">signal</span><span style="color: #000000">);</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">percussion</span><span style="color: #000000">.</span><span style="color: #001080">analyser</span><span style="color: #000000">.</span><span style="color: #001080">waveform</span><span style="color: #000000">);</span>
+<span style="color: #000000">    </span><span style="color: #008000">// ...</span>
+<span style="color: #000000">}</span>
+<span style="color: #795E26">requestAnimationFrame</span><span style="color: #000000">(</span><span style="color: #001080">render</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#example-projects" id="example-projects" style="color: inherit; text-decoration: none;">
+					<h2>Example Projects</h2>
+				</a>
+				<p>For some more real world examples of <em>euphony</em> in action check out these codesandboxes:</p>
+				<ul>
+					<li>TODO: ADD LINKS</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/Analyser.html" class="tsd-kind-icon">Analyser</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Controller.html" class="tsd-kind-icon">Controller</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/EuphonyNode.html" class="tsd-kind-icon">Euphony<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Group.html" class="tsd-kind-icon">Group</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Playback.html" class="tsd-kind-icon">Playback</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/AnalyserOptions.html" class="tsd-kind-icon">Analyser<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ControllerOptions.html" class="tsd-kind-icon">Controller<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/GroupOptions.html" class="tsd-kind-icon">Group<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/PlaybackOptions.html" class="tsd-kind-icon">Playback<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#CONTEXT" class="tsd-kind-icon">CONTEXT</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
